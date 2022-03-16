@@ -1,4 +1,0 @@
-<?php
-/**
- * Your code here
- */
