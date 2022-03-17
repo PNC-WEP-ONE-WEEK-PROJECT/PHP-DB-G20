@@ -12,3 +12,13 @@
 
 </head>
 <body>
+    
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="/images/fb.png" width="50" height="50" class="d-inline-block align-top" alt=""></a>
+  <div class="view">
+  <a class="navbar-brand" href="#"><img src="/images/home.png" width="40" height="40" class="d-inline-block align-top" alt=""></a>
+  <a class="navbar-brand" href="#"><img src="/images/views.png" width="40" height="40" class="d-inline-block align-top" alt=""></a>
+  <a class="navbar-brand" href="#"><img src="/images/add_freins.png" width="40" height="40" class="d-inline-block align-top" alt=""></a>
+  </div>
+ 
+</nav>
