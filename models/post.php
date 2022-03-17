@@ -5,7 +5,7 @@ require_once('database.php');
 function getPosts() 
 {
     global $database;
-    $statement = $database->prepare("SELECT * FROM users order by id");
+    $statement = $database->prepare("SELECT * FROM posts order by postID");
     $statement->execute();
     return $statement->fetchAll();
 }
