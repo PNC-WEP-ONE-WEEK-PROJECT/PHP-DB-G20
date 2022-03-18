@@ -1,18 +1,18 @@
-<!--  -->
-<?php require_once'templates/header.php';require_once'models/post.php';?>
+
+<?php require_once'templates/header.php';
+      require_once'models/post.php';
+?>
 
       <div class="container">
-
               <form action="../action/posts_view.php" method="post" enctype="multipart/form-data">
               <!-- Trigger the modal with a button --
               <!-- Modal -->
-
               <div class="modal fade" id="myModal" role="dialog">
                 
                 <div class="modal-dialog ">
                   <div class="modal-content">
                       <div class="modol-header mb-2">
-                            <input type="file" name="fileToUpload" id="fileToUpload"><br>
+                            <input type="file" name="fileToUpload"><br>
                       </div>
                       <div class="modal-body">
                       <textarea name="dercipion" class="form-control" placeholder="Caption"></textarea>
@@ -26,6 +26,5 @@
                 </div>
       </div>
 </form>
-
 </div>
 

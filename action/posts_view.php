@@ -3,14 +3,18 @@ require_once '../models/post.php';
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
     $dercipion = $_POST['dercipion'];
-    $text = $_POST['text'];
-    if(!empty($dercipion) and !empty($text))
+    $image = $_FILES['fileToUpload']['name'];
+    echo '<pre>';
+    print_r($_FILES['fileToUpload']);
+    echo '</pre>';
+    $statment = '../images/'.$image;
+    move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$statment);
+    // $text = $_POST['text'];
+    if(!empty($dercipion))
     {
-        $isCreated = createPost($dercipion,$text1);
+        $isCreated = createPost($dercipion,1,$image);
         if($isCreated){
-            header('location:../views/post_view.php');
-        }else{
-            header('location:../views/form_view.php');
+            header('location:../views/add_post.php');
         }
     }
 }

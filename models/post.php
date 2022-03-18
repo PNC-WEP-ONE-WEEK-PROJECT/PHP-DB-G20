@@ -2,10 +2,10 @@
 require_once('database.php');
 
 //fucnion to getPosts
-function getPosts() 
+function getAllPosts() 
 {
     global $database;
-    $statement = $database->prepare("SELECT * FROM posts order by postID");
+    $statement = $database->prepare("SELECT * FROM posts order by postID DESC");
     $statement->execute();
     return $statement->fetchAll();
 }
@@ -25,7 +25,7 @@ function getPostsById($id)
 function deletePost($id)
 {
     global $database;
-    $statement = $database->prepare("DELETE FROM users WHERE id = :id");
+    $statement = $database->prepare("DELETE FROM posts WHERE postID = :id");
     $statement->execute([
         ':id' => $id,
     ]);
@@ -48,14 +48,40 @@ function updateStudent($userID, $frist_name, $last_name, $gender, $email, $passw
 }
 
 // function to create Post
-function createPost($dercipion, $userID)
+function createPost($dercipion, $userID, $image)
 {
     global $database;
-    $statement=$database->prepare('INSERT INTO posts (dercipion,userID) VALUES(:dercipion,:userID)');
-    $statement ->execute([
-        ':dercipion' => $dercipion,
-        ':userID' => $userID
-    ]);
-    return $statement->rowCount()>0;
+    if($dercipion != null || $image != null){
+        $statement=$database->prepare('INSERT INTO posts (dercipion,userID,image) VALUES(:dercipion,:userID, :image)');
+        $statement ->execute([
+            ':dercipion' => $dercipion,
+            ':userID' => $userID,
+            ':image' => $image,
+            
+        ]);
+    }
 }
 
+// function addToPostList ($description,$user_id,$image)
+// {
+//     global $database;
+//     if($description != null || $image != null){
+//         $conts=$database->prepare("INSERT INTO posts (description,user_id,image) VALUES (:description,:user_id,:image)");
+//         $conts->execute([
+//             ':description' => $description,
+//             ':user_id' => $user_id,
+//             ':image' => $image,
+//         ]);
+//     }
+// }
+
+
+// function edit_post($dercipion){
+//     global $database;
+//     $statement = $database->prepare("EDIT FROM posts WHERE dercipion = :dercipion");
+//     $statement->execute([
+//         ':dercipion' => $dercipion,
+//     ]);
+
+
+// }

@@ -26,7 +26,7 @@
   </div>
 </nav>
 <div class="text-center">
-                    <img src="../images/p1.jpg" alt="" width="100%" height="300vh">
+                <img src="../images/p1.jpg" alt="" width="100%" height="300vh">
                 </div>
                 <hr>
                 <div class="col-md-6 mb-4">
