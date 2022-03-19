@@ -62,19 +62,6 @@ function createPost($dercipion, $userID, $image)
     }
 }
 
-// function addToPostList ($description,$user_id,$image)
-// {
-//     global $database;
-//     if($description != null || $image != null){
-//         $conts=$database->prepare("INSERT INTO posts (description,user_id,image) VALUES (:description,:user_id,:image)");
-//         $conts->execute([
-//             ':description' => $description,
-//             ':user_id' => $user_id,
-//             ':image' => $image,
-//         ]);
-//     }
-// }
-
 // ----------------------------------------comment on post----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //--------------------------------------- set comment on database-----------------------------------------
@@ -98,3 +85,14 @@ function getComment(){
     return $statement->fetchAll();
 
 }
+// ---------------------------------delete comment----------------------
+// function deleteComment($comment,$postId,$userId){
+//     global $database;
+//     $statement = $database->prepare("DELETE FROM comments WHERE commentID = :id, postID=:id, userID=:id");
+//     $statement->execute([
+//         ':id' => $id,
+//         ':postID' => $postId,
+//         ':userID' => $userID,
+//     ]);
+//     return $statement->rowCount() > 0;
+// }

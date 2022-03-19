@@ -32,7 +32,7 @@ require_once'../models/post.php';
 </form>
 </div>
 
-
+<!-- -----------------------------------display all post --------------------------------------------------- -->
 <div class="container mt-3">
     <?php
     require_once '../models/post.php';
@@ -52,26 +52,34 @@ require_once'../models/post.php';
 
             <img class="card-img-top"src="../images/<?= $post['image']?>" width="350" height="400" alt="">
             
-            <!-- <a href ="" class="card-li  btn-primary btn-sm float-right ml-2 mt-2" >Comment</a> -->
         </div>
           <div>
-            
+            <!-- -----------------------textarea can Comment------------------------------------------------ -->
             <form action="../action/comment.php?id=<?=$post['postID']?>" method='POST'>
-              <!-- <input type="hidden" name="userID" id="" value="name">
-              <input type="hidden" name="date_comment" id="" value=".date('Y-m-d H:i:s').">
-              <input type="hidden" name="postID" id="" value="anonymous"> -->
       
               <textarea name="content" cols="30" rows="10" ></textarea><br>
               <button type="submit" name="submit">Comment</button>
             </form>
           </div>
+          <!-- -------------------------------display Comment---------------------------------------------- -->
           <div class="comment-box">
             <?php
               require_once '../models/post.php';
               $comments = getComment();
               foreach($comments as $comment):
             ?>
-                <div class="shadow-sm p-3 mb-5 bg-body rounded"><?= $comment['content'],$comment['first_name']?></div>
+                <div class="shadow-sm p-3 mb-5 bg-body rounded"><?= $comment['first_name'],$comment['last_name'],$comment['content']?></div>
+                <!-- ---------------------------delete comment---------------------------- -->
+                <!-- <div >
+                <?php
+                // require_once '../models/post.php';
+                $getDeletes = deleteComment($comment,$postId,$userId);
+                foreach($getDeletes as $getDelete):
+                ?>
+                  <button class="card-li  btn-primary btn-sm float-right ml-2">edit</button>
+                  <button class="btn btn-danger btn-sm float-right">delete</button>
+                <?php endforeach?>
+                </div> -->
             <?php endforeach?>
             </div>
     </div>
