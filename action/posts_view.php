@@ -13,9 +13,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     if(!empty($dercipion))
     {
         $isCreated = createPost($dercipion,1,$image);
-        if($isCreated){
+        
             header('location:../views/add_post.php');
-        }
+        
     }
 }
 ?>

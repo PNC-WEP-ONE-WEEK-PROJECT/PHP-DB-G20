@@ -75,13 +75,26 @@ function createPost($dercipion, $userID, $image)
 //     }
 // }
 
+// ----------------------------------------comment on post----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// function edit_post($dercipion){
-//     global $database;
-//     $statement = $database->prepare("EDIT FROM posts WHERE dercipion = :dercipion");
-//     $statement->execute([
-//         ':dercipion' => $dercipion,
-//     ]);
+//--------------------------------------- set comment on database-----------------------------------------
+function setComment($comment,$postId,$userId){
+    global $database;
+    $statement = $database->prepare("INSERT INTO comments(content,userID,postID) VALUES(:content,:userID,:postID)");
+    $statement->execute([
+         ':content' => $comment,
+         ':postID' => $postId,
+         ':userID' => $userId
+    ]);
+    return ($statement->rowCount()==1);
+}
 
 
-// }
+//------------------------------------- get comment from database------------------------------------
+function getComment(){
+    global $database;
+    $statement = $database->prepare("SELECT content,first_name,last_name FROM comments join users on comments.userID=users.userID");
+    $statement->execute();
+    return $statement->fetchAll();
+
+}
