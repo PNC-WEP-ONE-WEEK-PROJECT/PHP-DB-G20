@@ -80,19 +80,17 @@ function setComment($comment,$postId,$userId){
 //------------------------------------- get comment from database------------------------------------
 function getComment(){
     global $database;
-    $statement = $database->prepare("SELECT content,first_name,last_name FROM comments join users on comments.userID=users.userID");
+    $statement = $database->prepare("SELECT commentID,postID, content,first_name,last_name FROM comments join users on comments.userID=users.userID");
     $statement->execute();
     return $statement->fetchAll();
 
 }
 // ---------------------------------delete comment----------------------
-// function deleteComment($comment,$postId,$userId){
-//     global $database;
-//     $statement = $database->prepare("DELETE FROM comments WHERE commentID = :id, postID=:id, userID=:id");
-//     $statement->execute([
-//         ':id' => $id,
-//         ':postID' => $postId,
-//         ':userID' => $userID,
-//     ]);
-//     return $statement->rowCount() > 0;
-// }
+function deleteComment($comment_id){
+    global $database;
+    $statement = $database->prepare("DELETE FROM comments WHERE commentID = :id");
+    $statement->execute([
+        ':id' => $comment_id
+    ]);
+    return $statement->rowCount() > 0;
+}

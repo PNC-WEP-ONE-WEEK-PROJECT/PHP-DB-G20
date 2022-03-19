@@ -33,7 +33,7 @@ require_once'../models/post.php';
 </div>
 
 <!-- -----------------------------------display all post --------------------------------------------------- -->
-<div class="container mt-3">
+<div class="container mt-3 w-75">
     <?php
     require_once '../models/post.php';
     $posts = getAllPosts();
@@ -44,48 +44,52 @@ require_once'../models/post.php';
             <img class="rounded-circle" src="../images/samoul.jpg" alt="" width="40" hight="20" >
             <span class="my-5 h4">Samoul</span>
         </div>
-        <div class="card-body ">
+        <div class="card-body">
             <h1 class="card-text"><?= $post['dercipion'] ?></h1>
 
-            <a href="" class="card-li  btn-primary btn-sm float-right ml-2">edit</a>
-            <a href="../action/delete_post.php?id=<?=$post['postID']?>" class="btn btn-danger btn-sm float-right">delete</a>
+            <a href="" class="btn btn-primary btn-sm float-right ml-2">Edit</a>
+            <a href="../action/delete_post.php?id=<?=$post['postID']?>" class="btn btn-danger btn-sm float-right">Delete</a>
 
-            <img class="card-img-top"src="../images/<?= $post['image']?>" width="350" height="400" alt="">
-            
+              <div class="card text-center">
+                <img class="card-img-top" src="../images/<?= $post['image']?>" alt="Responsive image">
+              </div>
         </div>
           <div>
             <!-- -----------------------textarea can Comment------------------------------------------------ -->
             <form action="../action/comment.php?id=<?=$post['postID']?>" method='POST'>
       
-              <textarea name="content" cols="30" rows="10" ></textarea><br>
-              <button type="submit" name="submit">Comment</button>
+              <textarea name="content" cols="30" rows="1" required placeholder="Write a comment.."  ></textarea><br>
+              <button type="submit" name="submit"  class="btn btn-primary" >Comment</button>
             </form>
           </div>
           <!-- -------------------------------display Comment---------------------------------------------- -->
-          <div class="comment-box">
             <?php
               require_once '../models/post.php';
               $comments = getComment();
               foreach($comments as $comment):
+                if ( $comment["postID"] == $post['postID']):
             ?>
-                <div class="shadow-sm p-3 mb-5 bg-body rounded"><?= $comment['first_name'],$comment['last_name'],$comment['content']?></div>
+                  <div class="shadow-sm p-3 mb-5 bg-body rounded">
+                    <div class="user_name">
+                      <?= $comment['first_name']." ".$comment['last_name']?>
+                    </div>
+                    <div class="user_comment">
+                      <?=$comment['content']?>
+                      <?= $comment["commentID"] ?>
+                    </div>
+                    <a href="../action/delete-comment.php?id=<?=$comment['commentID']?>" class="btn btn-danger btn-sm float-right ml-2">Delete</a>
+                </div>
                 <!-- ---------------------------delete comment---------------------------- -->
-                <!-- <div >
-                <?php
-                // require_once '../models/post.php';
-                $getDeletes = deleteComment($comment,$postId,$userId);
-                foreach($getDeletes as $getDelete):
-                ?>
-                  <button class="card-li  btn-primary btn-sm float-right ml-2">edit</button>
-                  <button class="btn btn-danger btn-sm float-right">delete</button>
-                <?php endforeach?>
-                </div> -->
-            <?php endforeach?>
+            <?php 
+            endif
+            ?>
+            <?php 
+            endforeach ?>
             </div>
+    <?php endforeach; ?>
     </div>
     
-    <?php endforeach; ?>
-</div>
+  </div>
 
 
 <?php
