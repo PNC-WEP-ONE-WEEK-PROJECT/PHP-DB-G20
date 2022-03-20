@@ -7,4 +7,4 @@ $userId = 1;
 // echo $comment ;
 setComment($comment,$postId,$userId);
 
-header('location: ../views/add_post.php');
+header('location: ../index.php');

@@ -1,3 +1,6 @@
+body{
+    background: rgb(229, 252, 247);
+}
 
 
 .group{
@@ -12,4 +15,10 @@
 }
 .group_edit{
     margin-bottom: 10px;
+}
+
+.content{
+    width: 50%;
+    height: 30vh;
+    margin-top: 150px;
 }

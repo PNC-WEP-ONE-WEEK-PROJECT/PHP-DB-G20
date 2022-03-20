@@ -1,9 +1,7 @@
 <?php
-require_once '../templates/header.php';
-require_once '../models/post.php';
+require_once 'templates/header.php';
+require_once 'models/post.php';
 ?>
-
-
 
 
 
@@ -36,11 +34,11 @@ require_once '../models/post.php';
 
 <div class=" w-50 float-right">
   <?php
-  require_once '../models/post.php';
+  require_once 'models/post.php';
   $posts = getAllPosts();
   foreach ($posts as $post) :
   ?>
-    <div class="card mt-2 w-75 mx-auto shadow p-3 mb-5 bg-white rounded">
+    <div class="card mt-2 w-75 mx-auto shadow p-3 mb-3 bg-white rounded">
       <div class="col">
         <img class="rounded-circle mt-2" src="../images/samoul.jpg" alt="" width="40" hight="20">
         <span class="my-5  h4">Samoul-Kh</span>
@@ -54,10 +52,12 @@ require_once '../models/post.php';
           <img class="card-img-top" src="../images/<?= $post['image'] ?>" alt="Responsive image">
         </div>
         <a href="#"><img src="/images/like.png" width="40" height="40" alt="">Like 100K</a>
+
         <div class="group-d_e mt-2 float-right">
-          <a href="#"><i class="fa fa-edit" style="font-size:30px; color:blue;"></i> </a>
+          <a href="views/edit_form_post.php?id=<?= $post['postID'] ?>"><i class="fa fa-edit" style="font-size:30px; color:blue;"></i> </a>
           <a href="../action/delete_post.php?id=<?= $post['postID'] ?>"><i class="fa fa-close" style="font-size:34px; color:red;"></i> </a>
         </div>
+
       </div>
       <!-- --------------------------------commets form---------------------------- -->
       <div class="dropdown ml-3 mr-3 ">
@@ -70,7 +70,7 @@ require_once '../models/post.php';
             </form>
             <!-- -------------------------------display Comment---------------------------------------------- -->
             <?php
-            require_once '../models/post.php';
+            require_once 'models/post.php';
             $comments = getComment();
             foreach ($comments as $comment) :
               if ($comment["postID"] == $post['postID']) :
@@ -82,7 +82,7 @@ require_once '../models/post.php';
                   </div>
                   <div class="user_comment ml-4 text-primary">
                     <?= $comment['content'] ?>
-                    <?= $comment["commentID"] ?>
+                    <!-- <?= $comment["commentID"] ?> -->
                     <a href="../action/delete-comment.php?id=<?= $comment['commentID'] ?>"><img src="/images/delete.png" width="20" height="20" alt="" class="float-right"></a>
                   </div>
                 </div>
@@ -101,4 +101,4 @@ require_once '../models/post.php';
 
 </div>
 <?php
-require_once '../templates/footer.php'; ?>
+require_once 'templates/footer.php'; ?>

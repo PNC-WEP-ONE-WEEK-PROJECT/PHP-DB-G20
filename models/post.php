@@ -14,11 +14,11 @@ function getAllPosts()
 function getPostsById($id) 
 {
     global $database;
-    $statement = $database->prepare("SELECT * FROM users where id = :id");
+    $statement = $database->prepare("SELECT * FROM posts where postID = :id");
     $statement->execute([
         'id' => $id,
     ]);
-    return $statement->fetch;
+    return $statement->fetch();
 }
 
 //function to deletePost
@@ -33,19 +33,21 @@ function deletePost($id)
 }   
 
 //function to updatePost
-function updateStudent($userID, $frist_name, $last_name, $gender, $email, $password)
+function updateStudent($dercipion, $postID, $image)
 {
     global $database;
-    $statement = $database->prepare("UPDATE users SET frist_name = :last_name, last_name = :last_name, gender = :gender, email = :email, password = :password");
-    $statement->execute([
-        ':userID' => $userID,
-        ':frist_name' => $frist_name,
-        ':last_name' => $last_name,
-        ':gender' => $gender,
-        ':email' => $email,
-        ':password' => $password
-    ]);
+    if($dercipion != null || $image != null){
+        $statement=$database->prepare('UPDATE posts SET dercipion= :dercipion, image= :image WHERE postID = :postID');
+        $statement ->execute([
+            ':dercipion' => $dercipion,
+            ':postID' => $postID,
+            ':image' => $image,
+            
+        ]);
+
+    }
 }
+
 
 // function to create Post
 function createPost($dercipion, $userID, $image)
@@ -61,7 +63,6 @@ function createPost($dercipion, $userID, $image)
         ]);
     }
 }
-
 
 
 // ----------------------------------------comment on post----------------------------------------------------------------------------------------------------------------------------------------------------------
