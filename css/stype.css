@@ -1,24 +1,15 @@
-body{
-    margin: 0;
-    padding: 0;
-}
-.navbar{
-    top: 0;
-    position: sticky;
-}
-.container-fluid{
-    background: rgb(67, 67, 245);
-    width: 50%;
-    /* display: flex; */
-    margin-top: 5rem;
 
-}
 
-/* title--- */
-.form-title{
-    font-size: 5rem;
+.group{
+    margin-top: -50px;  
 }
-.pro ,span{
-    font-size: 2rem;
-    margin-left: 10px;
+.group_span{
+    color: #fff;
+    font-size: 3rem;
+}
+.group_profile{
+    margin-top: 90px;
+}
+.group_edit{
+    margin-bottom: 10px;
 }
