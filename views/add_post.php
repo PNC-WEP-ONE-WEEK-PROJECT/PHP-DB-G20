@@ -32,13 +32,13 @@ require_once 'models/post.php';
 
 <!-- -----------------------------------display all post --------------------------------------------------- -->
 
-<div class=" w-50 float-right">
+<div class="group_post w-75 float-right">
   <?php
   require_once 'models/post.php';
   $posts = getAllPosts();
   foreach ($posts as $post) :
   ?>
-    <div class="card mt-2 w-75 mx-auto shadow p-3 mb-3 bg-white rounded">
+    <div class="card mt-2 w-75 mr-2 shadow float-right mb-3 bg-white rounded">
       <div class="col">
         <img class="rounded-circle mt-2" src="../images/samoul.jpg" alt="" width="40" hight="20">
         <span class="my-5  h4">Samoul-Kh</span>
@@ -54,45 +54,45 @@ require_once 'models/post.php';
         <a href="#"><img src="/images/like.png" width="40" height="40" alt="">Like 100K</a>
 
         <div class="group-d_e mt-2 float-right">
-          <a href="views/edit_form_post.php?id=<?= $post['postID'] ?>"><i class="fa fa-edit" style="font-size:30px; color:blue;"></i> </a>
-          <a href="../action/delete_post.php?id=<?= $post['postID'] ?>"><i class="fa fa-close" style="font-size:34px; color:red;"></i> </a>
+          <a href="views/edit_form_post.php?id=<?= $post['postID'] ?>"><i class="fa fa-pencil" style="font-size:25px; color:blue;"></i> </a>
+          <a href="../action/delete_post.php?id=<?= $post['postID'] ?>"><i class="fa fa-times-circle-o" style="font-size:25px; color:red;"></i> </a>
         </div>
 
       </div>
       <!-- --------------------------------commets form---------------------------- -->
       <div class="dropdown ml-3 mr-3 ">
-          <a  href="#" class="comment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="comment  fa fa-commenting-o" style="font-size:30px; color:blue;"></i> Comment</a>
-          <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-            <!-- -----------------------textarea can Comment------------------------------------------------ -->
-            <form action="../action/comment.php?id=<?= $post['postID'] ?>" method='POST'>
-              <textarea name="content" cols="30" rows="1" required placeholder="Write a comment.." class="form-control"></textarea>
-              <button type="submit" name="submit" class="btn btn-default btn-sm bg-primary text-light float-right mt-1" data-dismiss="modal">Comment</button>
-            </form>
-            <!-- -------------------------------display Comment---------------------------------------------- -->
-            <?php
-            require_once 'models/post.php';
-            $comments = getComment();
-            foreach ($comments as $comment) :
-              if ($comment["postID"] == $post['postID']) :
-            ?>
-                <div class="shadow-sm p-2 mb-1 bg-body rounded mt-4">
-                  <div class="user_name">
-                    <img class="rounded-circle" src="../images/samoul.jpg" alt="" width="20" hight="20">
-                    <?= $comment['first_name'] . " " . $comment['last_name'] ?>
-                  </div>
-                  <div class="user_comment ml-4 text-primary">
-                    <?= $comment['content'] ?>
-                    <!-- <?= $comment["commentID"] ?> -->
-                    <a href="../action/delete-comment.php?id=<?= $comment['commentID'] ?>"><img src="/images/delete.png" width="20" height="20" alt="" class="float-right"></a>
-                  </div>
+        <a href="#" class="comment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="comment  fa fa-commenting-o" style="font-size:30px; color:blue;"></i> Comment</a>
+        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+          <!-- -----------------------textarea can Comment------------------------------------------------ -->
+          <form action="../action/comment.php?id=<?= $post['postID'] ?>" method='POST'>
+            <textarea name="content" cols="30" rows="1" required placeholder="Write a comment.." class="form-control"></textarea>
+            <button type="submit" name="submit" class="btn btn-default btn-sm bg-primary text-light float-right mt-1" data-dismiss="modal">Comment</button>
+          </form>
+          <!-- -------------------------------display Comment---------------------------------------------- -->
+          <?php
+          require_once 'models/post.php';
+          $comments = getComment();
+          foreach ($comments as $comment) :
+            if ($comment["postID"] == $post['postID']) :
+          ?>
+              <div class="shadow-sm p-2 mb-1 bg-body rounded mt-4">
+                <div class="user_name">
+                  <img class="rounded-circle" src="../images/samoul.jpg" alt="" width="20" hight="20">
+                  <?= $comment['first_name'] . " " . $comment['last_name'] ?>
                 </div>
-                <!-- ---------------------------delete comment---------------------------- -->
-              <?php
-              endif
-              ?>
+                <div class="user_comment ml-4 text-primary">
+                  <?= $comment['content'] ?>
+                  <!-- <?= $comment["commentID"] ?> -->
+                  <a href="../action/delete-comment.php?id=<?= $comment['commentID'] ?>"><img src="/images/delete.png" width="20" height="20" alt="" class="float-right"></a>
+                </div>
+              </div>
+              <!-- ---------------------------delete comment---------------------------- -->
             <?php
-            endforeach ?>
-          </div>
+            endif
+            ?>
+          <?php
+          endforeach ?>
+        </div>
       </div>
     </div>
 

@@ -10,15 +10,28 @@ body{
     color: #fff;
     font-size: 3rem;
 }
-.group_profile{
-    margin-top: 90px;
-}
+
 .group_edit{
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+    margin-left: 140px;
+    
 }
 
 .content{
     width: 50%;
     height: 30vh;
+    margin-top: 150px;
+}
+.group_post{
+    margin-top: 65px;
+}
+
+.group_profile{
+    width: 41%;
+    margin-top: 75px;
+}
+.contents{
+    width: 50%;
+    height: 57vh;
     margin-top: 150px;
 }
