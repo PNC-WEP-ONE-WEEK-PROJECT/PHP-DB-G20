@@ -19,11 +19,11 @@
 
 <body>
     <nav class="navbar navbar-light fixed-top bg-light w-100 rounded">
-        <a class="navbar-brand" href="#"><img src="/images/fb.png" width="40" height="40" class="d-inline-block align-top" alt=""></a>
+        <a class="navbar-brand" href="#"><img src="/images/fb.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
         <div class="view mr-2">
-            <a class="navbar-brand" href="../index.php"><img src="/images/home.png" width="40" height="40" class="d-inline-block align-top" alt=""></a>
-            <a class="navbar-brand" href="#"><img src="/images/upload.png" width="35" height="35" class="d-inline-block align-top" data-toggle="modal" data-target="#myModal" alt=""></a>
-            <a class="navbar-brand" href="#"><img src="/images/add_freins.png" width="40" height="40" class="d-inline-block align-top" alt=""></a>
+            <a class="navbar-brand" href="../index.php"><img src="/images/home.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="/images/upload.png" width="30" height="30" class="d-inline-block align-top" data-toggle="modal" data-target="#myModal" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="/images/add_freins.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
         </div>
     </nav>
 
